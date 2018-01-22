@@ -13,6 +13,6 @@
 
    
    <context:component-scan base-package="controllers" />   
-   <mvc:resources mapping="/static/**" location="/pages/"/>
+   <mvc:resources mapping="/static/**" location="/"/>
    <mvc:annotation-driven/>
 </beans>

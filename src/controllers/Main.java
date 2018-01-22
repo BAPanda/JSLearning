@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Main {
 	@RequestMapping("/info")
 	public String getInfo() {
-		return "static/index.html";
+		return "static/pages/index.html";
 	}
 }

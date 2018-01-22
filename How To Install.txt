@@ -1,0 +1,6 @@
+1. установить JDk 1.8 ( http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html )
+2. скачать apache tomcat 9 ( https://tomcat.apache.org/download-90.cgi )
+3. распаковать архив с tomcat
+4. в папку tomcat/webapps положить файл JSLearning-0.0.1-SNAPSHOT.war (папка проекта/target)
+5. через консоль из папки tomcat/bin вызвать " catalina.bat start " (если не запустится - в файле conf/server.xml изменить порты 8005 и 8080 на свободные и проверить, на какую jRE смотрит)
+6. перейти на http://localhost:8090/JSLearning-0.0.1-SNAPSHOT/info

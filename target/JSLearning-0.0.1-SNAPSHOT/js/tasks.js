@@ -1,14 +1,14 @@
 function addSubcategory() {
-	var ul;
+	var ul, newLi;
+	
+	newLi = document.createElement('li');
 	
 	if (this.parentElement.lastElementChild.tagName == 'ul') {
 		ul = this.parentElement.lastElementChild;
 	} else {
 		ul = document.createElement('ul');
 		this.parentElement.appendChild(ul);
-	}
-	
-    var newLi = document.createElement('li');
+	}    
 	
 	newLi.id = 'li-n-' + (ul.childNodes.length);
 	
@@ -32,9 +32,8 @@ function createButton(newLi) {
 	button.onclick = addSubcategory;
 }
 
-var buttonAdd = document.getElementById('addToList');
 
-buttonAdd.onclick = function () {	
+$('#addCat').click( function () {	
 	
 	var list = document.getElementById('list');
 	
@@ -47,5 +46,5 @@ buttonAdd.onclick = function () {
 	createButton(newLi);
 	
 	list.appendChild(newLi);
-}
+})
 

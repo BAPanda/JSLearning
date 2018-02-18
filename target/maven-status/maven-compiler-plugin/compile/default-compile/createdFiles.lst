@@ -1,1 +1,7 @@
+controllers\ItemController.class
 controllers\Main.class
+dao\ItemDAO.class
+dao\ItemDAO$ItemResultSetExtractor.class
+dao\ItemDAO$ItemRowMapper.class
+model\Item.class
+dao\ItemDAO$1.class

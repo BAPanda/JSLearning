@@ -46,7 +46,7 @@ function getItems(GUID) {
 		dataType: "json",
 		success: function(data) {			
 			console.log("123");
-		    var dataHtml = _.template($('toDoItem-tpl').html())({items: data});
+		    var dataHtml = _.template($('#toDoItem-tpl').html())({items: data});
 		    $('#items').html(dataHtml);
 		}
 	});

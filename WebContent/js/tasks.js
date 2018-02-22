@@ -1,20 +1,20 @@
-function addSubcategory() {
+function addSubcategory(button) {
 	var ul, newLi;
-	
-	newLi = document.createElement('li');
-	
-	if (this.parentElement.lastElementChild.tagName == 'ul') {
-		ul = this.parentElement.lastElementChild;
+	var cat = {
+			id: '123456789',
+			name: 'new cat',
+	};
+		
+	if ($(button).parent().last().tagName == 'ul') {
+		ul = $(button).parent().last();
 	} else {
 		ul = document.createElement('ul');
-		this.parentElement.appendChild(ul);
-	}    
+		$(button).parent().append(ul);
+	}   
 	
-	newLi.id = 'li-n-' + (ul.childNodes.length);
+	newLi = _.template($('#categoryItem-tpl').html())({categoryItem : cat});
 	
-	newLi.innerHTML = "<button onclick='getItems()'>" + prompt('Category name','') + "</button>";
-	
-	ul.appendChild(newLi);
+	$(ul).append(newLi);
 }
 
 

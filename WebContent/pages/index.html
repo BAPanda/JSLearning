@@ -37,8 +37,8 @@
                }
              %>
             <li data-catId='<%-GUID%>'>
-                <button onclick="getItems(<%-GUID%>)"><%-categoryItem.name%></button>
-                <button class="btn btn-primary btn-sm add-btn" onclick="addSubcategory(<%-GUID%>)">Add</button>
+                <button type='button' onclick="getItems(<%-GUID%>)" class='btn btn-link btn-sm'><%-categoryItem.name%></button>
+                <button type='button' class="btn btn-primary btn-sm add-btn" onclick="addSubcategory(this)">Add</button>
             </li>      
 	</script>
 	

@@ -12,42 +12,23 @@ function addSubcategory() {
 	
 	newLi.id = 'li-n-' + (ul.childNodes.length);
 	
-	newLi.innerHTML = prompt('Category name','');
+	newLi.innerHTML = "<button onclick='getItems()'>" + prompt('Category name','') + "</button>";
 	
 	ul.appendChild(newLi);
-	
-	createButton(newLi);
-}
-
-function createButton(newLi) {
-	var button = document.createElement('button');
-	
-	button.classList.add('btn');
-	button.classList.add('btn-primary');
-	button.classList.add('btn-sm');
-	button.classList.add('add-btn');
-	
-	newLi.appendChild(button);
-	
-	button.onclick = addSubcategory;
 }
 
 
 $('#addCat').click( function () {	
+	var cat = {
+			id: '123456789',
+			name: 'new cat',
+	};
 	
-	var list, newLi;
+	var newLi = _.template($('#categoryItem-tpl').html())({categoryItem : cat});
 	
-	list = document.getElementById('list');
+	console.log(newLi);
 	
-	newLi = document.createElement('li');
-	
-	newLi.id = 'li-n-' + (list.childNodes.length);
-	
-	newLi.innerHTML = "<button onclick='getItems()'>" + prompt('Category name','') + "</button>" ;	
-		
-	createButton(newLi);
-	
-	list.appendChild(newLi);
+	$('#list').append(newLi);
 })
 
 function guid() {
@@ -57,19 +38,15 @@ function guid() {
   return s4() + s4() + s4() + s4();
 }
 
-function getItems() {
+function getItems(GUID) {
 	$.ajax({
 		type: "GET",
 		url: "/JSLearning/items",
-		data: {"groupId" : 2},
+		data: {"groupId" : GUID},
 		dataType: "json",
-		success: function(data) {
+		success: function(data) {			
 			console.log("123");
-		    var dataHtml = '<ul>';
-		    $.each(data, function (index, item) {
-		                     dataHtml += '<li>' + item.name + '</li>';                         
-		                 });
-		    dataHtml += '</ul>';
+		    var dataHtml = _.template($('toDoItem-tpl').html())({items: data});
 		    $('#items').html(dataHtml);
 		}
 	});

@@ -10,10 +10,38 @@
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-		crossorigin="anonymous"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src='static/bootstrap/js/bootstrap.js'></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"></script>
+
+	<script type='text/tmpl' id='toDoItem-tpl'>
+            <% toDoList.forEach(function(toDoItem) { %>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><%-toDoItem.name%></h5>
+                        <p class="card-text"><%-toDoItem.description%></p>
+                        <button class="btn btn-warning">Edit</a>
+                        <button class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            <% }); %>        
+	</script>
+	
+	<script type='text/tmpl' id='categoryItem-tpl'>
+            <% var GUID;
+               if (categoryItem.id != null && categoryItem.id != '') {
+                   GUID = categoryItem.id;
+               } else {
+                   GUID = guid();
+               }
+             %>
+            <li data-catId='<%-GUID%>'>
+                <button onclick="getItems(<%-GUID%>)"><%-categoryItem.name%></button>
+                <button class="btn btn-primary btn-sm add-btn" onclick="addSubcategory(<%-GUID%>)">Add</button>
+            </li>      
+	</script>
+	
 
 	<button type='button' class='btn btn-primary btn-sm' id='addCat'>Add
 		to list</button>
@@ -21,7 +49,7 @@
 		<ol id='list'>
 		</ol>
 	</div>
-	
+
 	<div id='items' style='right: 500px;'></div>
 
 

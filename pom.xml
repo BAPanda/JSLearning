@@ -34,19 +34,6 @@
 			</plugin>
 		</plugins>
 	</build>
-<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>5.0.2.RELEASE</version>
-			<scope>compile</scope>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
-		<dependency>
-    		<groupId>postgresql</groupId>
-    		<artifactId>postgresql</artifactId>
-    		<version>9.0-801.jdbc4</version>
-		</dependency>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->

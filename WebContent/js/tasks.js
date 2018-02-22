@@ -43,20 +43,38 @@ $('#addCat').click( function () {
 	
 	newLi.id = 'li-n-' + (list.childNodes.length);
 	
-	newLi.innerHTML = prompt('Category name','');
-	
-	$(newLi).click($.ajax({
-        type: 'GET',
-        url: '/items',
-        success: function(response) {
-        resp = response;
-        	console.log(response);
-            done(response);
-        }
-    }));
-	
+	newLi.innerHTML = "<button onclick='getItems()'>" + prompt('Category name','') + "</button>" ;	
+		
 	createButton(newLi);
 	
 	list.appendChild(newLi);
 })
+
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000);
+  }
+  return s4() + s4() + s4() + s4();
+}
+
+function getItems() {
+	$.ajax({
+		type: "GET",
+		url: "/JSLearning/items",
+		data: {"groupId" : 2},
+		dataType: "json",
+		success: function(data) {
+			console.log("123");
+		    var dataHtml = '<ul>';
+		    $.each(data, function (index, item) {
+		                     dataHtml += '<li>' + item.name + '</li>';                         
+		                 });
+		    dataHtml += '</ul>';
+		    $('#items').html(dataHtml);
+		}
+	});
+	
+}
+
+
 

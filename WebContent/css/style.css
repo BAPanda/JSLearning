@@ -6,3 +6,8 @@
 .card {
 	width: 18rem;
 }
+
+#items {
+	position: relative;
+	left: 50px;
+}

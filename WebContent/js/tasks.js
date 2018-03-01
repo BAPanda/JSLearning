@@ -1,9 +1,19 @@
-function addSubcategory(button) {
-	var ul, newLi;
-	var cat = {
+var cat = {
 		id : '123456789',
 		name : 'new cat',
 	};
+
+
+var item = {
+	id: '123',
+	name : '123',
+	description : '123'
+};
+
+var items = [item];
+
+function addSubcategory(button) {
+	var ul, newLi;
 
 	if ($(button).parent().last().tagName == 'ul') {
 		ul = $(button).parent().last();
@@ -20,10 +30,7 @@ function addSubcategory(button) {
 }
 
 $('#addCat').click(function() {
-	var cat = {
-		id : '123456789',
-		name : 'new cat',
-	};
+	
 
 	var newLi = _.template($('#categoryItem-tpl').html())({
 		categoryItem : cat
@@ -42,13 +49,6 @@ function guid() {
 }
 
 function getItems(GUID) {
-	var item = {
-		id: '123',
-		name : '123',
-		description : '123'
-	};
-	
-	var items = [item];
 
 	var dataHtml = _.template($('#toDoItem-tpl').html())({
 		toDoList : items
@@ -79,4 +79,28 @@ function getItems(GUID) {
 		}
 	});
 
+}
+
+function editToDo(toDoID) {
+	var i;
+	
+	for (i = 0; i < items.length; i++) {
+		if (items[i].id == toDoID) {
+			editingItem = items[i];
+			break;
+		}
+	}
+	
+	alert(item[i]);
+	
+	newName = prompt("Хотите изменить имя?", "");
+	newDescription = prompt("Хотите изменить описание?","");
+	
+	if (newName != "")
+		items[i].name = newName;
+	
+	if (newDescription != "")
+		items[i].description = newDescription;
+	
+	getItems(123);
 }
